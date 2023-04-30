@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 public interface CleanerScheduleRecordRepository extends JpaRepository<CleanerScheduleRecord, Integer> {
 
     @Query(value = "UPDATE cleaner_schedule_record SET cleaner_id=?1 " +
-            "WHERE week_day=?2 AND floor_number=?3", nativeQuery = true)
+            "WHERE week_day=?2 AND floor_number=?3;", nativeQuery = true)
     void updateRecord(Integer cleanerID, DayOfWeek newDay, Integer newFloorNumber);
 
 }

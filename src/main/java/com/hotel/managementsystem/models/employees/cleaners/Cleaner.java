@@ -34,4 +34,8 @@ public class Cleaner {
         this.middleName = middleName;
         this.lastName = lastName;
     }
+
+    public Integer getCleanerID() {
+        return cleanerID;
+    }
 }

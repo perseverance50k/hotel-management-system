@@ -4,6 +4,7 @@ import com.hotel.managementsystem.exceptions.CleanerNotFoundException;
 import com.hotel.managementsystem.models.employees.cleaners.Cleaner;
 import com.hotel.managementsystem.models.employees.cleaners.DayOfWeek;
 import com.hotel.managementsystem.repository.CleanerRepository;
+import com.hotel.managementsystem.repository.CleanerScheduleRecordRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,13 +14,15 @@ import java.util.Optional;
 public class CleanerService {
 
     private final CleanerRepository cleanerRepository;
+    private final CleanerScheduleRecordRepository scheduleRecordRepository;
 
     @Autowired
-    public CleanerService(CleanerRepository cleanerRepository) {
+    public CleanerService(CleanerRepository cleanerRepository, CleanerScheduleRecordRepository scheduleRecordRepository) {
         this.cleanerRepository = cleanerRepository;
+        this.scheduleRecordRepository = scheduleRecordRepository;
     }
 
-    public Cleaner getCleanerByFloorAndDay(Integer floorNumber, DayOfWeek dayOfWeek) {
+    public Cleaner getCleanerByFloorAndDay(DayOfWeek dayOfWeek, Integer floorNumber) {
         Optional<Cleaner> targetCleaner = cleanerRepository.findCleanerByFloorAndDay(floorNumber, dayOfWeek);
 
         if (targetCleaner.isEmpty()) {
@@ -30,14 +33,14 @@ public class CleanerService {
     }
 
     public void hireNewCleaner(Cleaner cleaner) {
-        // TODO: Create an SQL query for this operation in CleanerRepository
+        cleanerRepository.save(cleaner);
     }
 
     public void layOffCleaner(Cleaner cleaner) {
-        // TODO: Create an SQL query for this operation in CleanerRepository
+        cleanerRepository.delete(cleaner);
     }
 
-    public void changeCleanerSchedule(Cleaner cleaner, Integer floorNumber, DayOfWeek dayOfWeek) {
-        // TODO: Create an SQL query for this operation in CleanerRepository
+    public void changeCleanerSchedule(Cleaner cleaner, DayOfWeek dayOfWeek, Integer floorNumber) {
+        scheduleRecordRepository.updateRecord(cleaner.getCleanerID(), dayOfWeek, floorNumber);
     }
 }

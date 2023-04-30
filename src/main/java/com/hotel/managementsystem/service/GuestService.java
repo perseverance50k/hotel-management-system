@@ -6,6 +6,7 @@ import com.hotel.managementsystem.repository.RoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -29,10 +30,12 @@ public class GuestService {
     }
 
     public void checkInGuestsInRoom(Integer roomNumber, Guest... guests) {
-        // TODO: create an SQL query for this operation in GuestRepository
+        guestRepository.saveAll(Arrays.asList(guests));
+        roomRepository.setIsAvailableFalse(roomNumber);
     }
 
     public void checkOutGuestsFromRoom(Integer roomNumber) {
-        // TODO: create an SQL query for this operation in GuestRepository
+        guestRepository.deleteGuestsByRoomNumber(roomNumber);
+        roomRepository.setIsAvailableTrue(roomNumber);
     }
 }

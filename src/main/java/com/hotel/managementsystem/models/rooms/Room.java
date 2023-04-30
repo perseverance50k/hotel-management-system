@@ -23,6 +23,9 @@ public class Room {
     @Column(name = "is_available", nullable = false)
     private Boolean isAvailable;
 
+    public Room() {
+    }
+
     public Room(Integer roomNumber, String telephoneNumber, RoomType type, Boolean isAvailable) {
         this.roomNumber = roomNumber;
         this.telephoneNumber = telephoneNumber;

@@ -39,4 +39,19 @@ public class Guest {
     @Column(name = "check_out_date", nullable = false)
     private LocalDate checkOutDate;
 
+    public Guest() {
+    }
+
+    public Guest(Integer roomNumber, String passportNumber, String firstName,
+                 String middleName, String lastName, String arrivedFromCity,
+                 LocalDate checkInDate, LocalDate checkOutDate) {
+        this.roomNumber = roomNumber;
+        this.passportNumber = passportNumber;
+        this.firstName = firstName;
+        this.middleName = middleName;
+        this.lastName = lastName;
+        this.arrivedFromCity = arrivedFromCity;
+        this.checkInDate = checkInDate;
+        this.checkOutDate = checkOutDate;
+    }
 }

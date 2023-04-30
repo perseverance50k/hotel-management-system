@@ -16,4 +16,6 @@ public interface GuestRepository extends JpaRepository<Guest, Integer> {
     @Query(value = "SELECT * FROM guest gst WHERE gst.room_id=?1;", nativeQuery = true)
     List<Guest> findGuestsByRoomNumber(Integer roomNumber);
 
+    @Query(value = "DELETE FROM guest WHERE room_number=?1;", nativeQuery = true)
+    void deleteGuestsByRoomNumber(Integer roomNumber);
 }
