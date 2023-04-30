@@ -10,6 +10,9 @@ public class Room {
     @Column(name = "room_id")
     private Integer roomID;
 
+    @Column(name = "number")
+    private Integer roomNumber;
+
     @Column(name = "tel_number", nullable = false)
     private String telephoneNumber;
 
@@ -20,4 +23,10 @@ public class Room {
     @Column(name = "is_available", nullable = false)
     private Boolean isAvailable;
 
+    public Room(Integer roomNumber, String telephoneNumber, RoomType type, Boolean isAvailable) {
+        this.roomNumber = roomNumber;
+        this.telephoneNumber = telephoneNumber;
+        this.type = type;
+        this.isAvailable = isAvailable;
+    }
 }

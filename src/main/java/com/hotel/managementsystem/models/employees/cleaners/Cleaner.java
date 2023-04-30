@@ -25,4 +25,13 @@ public class Cleaner {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<CleanerScheduleRecord> scheduleRecords = new ArrayList<>();
 
+    public Cleaner() {
+    }
+
+    public Cleaner(Integer cleanerID, String firstName, String middleName, String lastName) {
+        this.cleanerID = cleanerID;
+        this.firstName = firstName;
+        this.middleName = middleName;
+        this.lastName = lastName;
+    }
 }

@@ -15,8 +15,8 @@ public class Guest {
     @Column(name = "guest_id")
     private Integer guestID;
 
-    @Column(name = "room_id", nullable = false)
-    private Integer roomID;
+    @Column(name = "room_number", nullable = false)
+    private Integer roomNumber;
 
     @Column(name = "passport_number", nullable = false)
     private String passportNumber;
