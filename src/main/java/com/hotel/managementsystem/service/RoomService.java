@@ -1,7 +1,6 @@
 package com.hotel.managementsystem.service;
 
 import com.hotel.managementsystem.exceptions.NoAvailableRoomTypeException;
-import com.hotel.managementsystem.models.rooms.RoomType;
 import com.hotel.managementsystem.repository.RoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,7 +33,7 @@ public class RoomService {
 
     public Integer findFirstAvailableRoomNumberDependingOnType(String roomType) {
 
-        Integer roomNumber = roomRepository.findFirstAvailableRoomNumberByType(RoomType.valueOf(roomType));
+        Integer roomNumber = roomRepository.findFirstAvailableRoomNumberByType(roomType);
 
         if (roomNumber == null) {
             throw new NoAvailableRoomTypeException(String.format("There is no available room of type %s!", roomType));

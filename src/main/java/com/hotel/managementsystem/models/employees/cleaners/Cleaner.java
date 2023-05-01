@@ -42,11 +42,11 @@ public class Cleaner {
     @Override
     public String toString() {
         return "Cleaner{" +
-                "cleanerID=" + cleanerID +
-                ", firstName='" + firstName + '\'' +
-                ", middleName='" + middleName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", scheduleRecords=" + scheduleRecords +
+                "\n\tcleanerID=" + cleanerID +
+                ", \n\tfirstName='" + firstName + '\'' +
+                ", \n\tmiddleName='" + middleName + '\'' +
+                ", \n\tlastName='" + lastName + '\'' +
+                ", \n\tscheduleRecords=" + scheduleRecords +
                 '}';
     }
 }

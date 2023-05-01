@@ -12,7 +12,7 @@ public class Guest {
     @Column(name = "guest_id")
     private Long guestID;
 
-    @Column(name = "room_number", nullable = false)
+    @Column(name = "room_number")
     private Integer roomNumber;
 
     @Column(name = "passport_number", nullable = false)
@@ -39,10 +39,9 @@ public class Guest {
     public Guest() {
     }
 
-    public Guest(Integer roomNumber, String passportNumber, String firstName,
-                 String middleName, String lastName, String arrivedFromCity,
+    public Guest(String firstName, String middleName, String lastName,
+                 String passportNumber, String arrivedFromCity,
                  LocalDate checkInDate, LocalDate checkOutDate) {
-        this.roomNumber = roomNumber;
         this.passportNumber = passportNumber;
         this.firstName = firstName;
         this.middleName = middleName;
@@ -50,5 +49,9 @@ public class Guest {
         this.arrivedFromCity = arrivedFromCity;
         this.checkInDate = checkInDate;
         this.checkOutDate = checkOutDate;
+    }
+
+    public void setRoomNumber(Integer roomNumber) {
+        this.roomNumber = roomNumber;
     }
 }

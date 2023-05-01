@@ -67,8 +67,15 @@ public class AdministrationService {
     private void checkInGuestsAndReserveRoom(Guest... guests) {
         String suitableRoomType = getSuitableRoomType(guests.length);
         Integer roomNumber = roomService.findFirstAvailableRoomNumberDependingOnType(String.valueOf(suitableRoomType));
+
+        for (Guest guest : guests) {
+            guest.setRoomNumber(roomNumber);
+        }
+
         guestService.checkInGuestsInRoom(roomNumber, guests);
         roomService.setAvailableToFalse(roomNumber);
+
+        System.out.println("CHECKED IN – RoomType: " + suitableRoomType + ", roomNumber: " + roomNumber);
     }
 
     private String getSuitableRoomType(int numberOfGuests) {

@@ -11,6 +11,6 @@ public interface CleanerScheduleRecordRepository extends JpaRepository<CleanerSc
 
     @Query(value = "UPDATE hotel_management_system.cleaner_schedule_record SET cleaner_cleaner_id=?1 " +
             "WHERE week_day=?2 AND floor_number=?3", nativeQuery = true)
-    void updateRecord(Long cleanerID, DayOfWeek newDay, Integer newFloorNumber);
+    Integer updateRecord(Long cleanerID, DayOfWeek newDay, Integer newFloorNumber);
 
 }
