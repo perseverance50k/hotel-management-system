@@ -33,7 +33,7 @@ public class AdministrationService {
     }
 
     public Cleaner getCleanerInfoByDayAndFloor(String day, Integer floorNumber) {
-        return cleanerService.getCleanerByFloorAndDay(DayOfWeek.valueOf(day), floorNumber);
+        return cleanerService.getCleanerByFloorAndDay(day, floorNumber);
     }
 
     public boolean areThereAvailableRooms() {

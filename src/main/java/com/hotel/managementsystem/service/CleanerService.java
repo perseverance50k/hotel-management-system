@@ -22,7 +22,7 @@ public class CleanerService {
         this.scheduleRecordRepository = scheduleRecordRepository;
     }
 
-    public Cleaner getCleanerByFloorAndDay(DayOfWeek dayOfWeek, Integer floorNumber) {
+    public Cleaner getCleanerByFloorAndDay(String dayOfWeek, Integer floorNumber) {
         Optional<Cleaner> targetCleaner = cleanerRepository.findCleanerByFloorAndDay(dayOfWeek, floorNumber);
 
         if (targetCleaner.isEmpty()) {

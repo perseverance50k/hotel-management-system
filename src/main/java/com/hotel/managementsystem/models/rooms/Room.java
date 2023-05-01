@@ -1,6 +1,6 @@
 package com.hotel.managementsystem.models.rooms;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity(name = "room")
 public class Room {

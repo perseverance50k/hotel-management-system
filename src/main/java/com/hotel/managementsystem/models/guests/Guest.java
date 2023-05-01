@@ -1,9 +1,7 @@
 package com.hotel.managementsystem.models.guests;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import jakarta.persistence.*;
+
 import java.time.LocalDate;
 
 @Entity(name = "guest")

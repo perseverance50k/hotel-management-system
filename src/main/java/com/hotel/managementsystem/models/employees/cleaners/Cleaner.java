@@ -1,6 +1,7 @@
 package com.hotel.managementsystem.models.employees.cleaners;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,5 +37,16 @@ public class Cleaner {
 
     public Long getCleanerID() {
         return cleanerID;
+    }
+
+    @Override
+    public String toString() {
+        return "Cleaner{" +
+                "cleanerID=" + cleanerID +
+                ", firstName='" + firstName + '\'' +
+                ", middleName='" + middleName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", scheduleRecords=" + scheduleRecords +
+                '}';
     }
 }

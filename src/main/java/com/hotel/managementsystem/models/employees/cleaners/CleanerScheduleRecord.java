@@ -1,6 +1,6 @@
 package com.hotel.managementsystem.models.employees.cleaners;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity(name = "cleaner_schedule_record")
 public class CleanerScheduleRecord {
