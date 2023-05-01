@@ -1,6 +1,6 @@
 package com.hotel.managementsystem.models.employees.cleaners;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 @Entity(name = "cleaner_schedule_record")
 public class CleanerScheduleRecord {
@@ -8,10 +8,10 @@ public class CleanerScheduleRecord {
     @Id
     @GeneratedValue
     @Column(name = "record_id")
-    private Integer recordID;
+    private Long recordID;
 
-    @Column(name = "cleaner_id", nullable = false)
-    private Integer cleanerID;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Cleaner cleaner;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "week_day", nullable = false)
@@ -24,21 +24,10 @@ public class CleanerScheduleRecord {
 
     }
 
-    public CleanerScheduleRecord(int cleanerID, DayOfWeek dayOfWeek, int floorNumber) {
-        this.cleanerID = cleanerID;
+    public CleanerScheduleRecord(Cleaner cleaner, DayOfWeek dayOfWeek, Integer floorNumber) {
+        this.cleaner = cleaner;
         this.dayOfWeek = dayOfWeek;
         this.floorNumber = floorNumber;
     }
 
-    public DayOfWeek getDayOfWeek() {
-        return dayOfWeek;
-    }
-
-    public int getFloorNumber() {
-        return floorNumber;
-    }
-
-    public int getCleanerID() {
-        return cleanerID;
-    }
 }

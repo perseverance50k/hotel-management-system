@@ -1,6 +1,6 @@
 package com.hotel.managementsystem.models.rooms;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 @Entity(name = "room")
 public class Room {
@@ -8,7 +8,7 @@ public class Room {
     @Id
     @GeneratedValue
     @Column(name = "room_id")
-    private Integer roomID;
+    private Long roomID;
 
     @Column(name = "number")
     private Integer roomNumber;

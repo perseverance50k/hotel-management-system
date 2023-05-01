@@ -23,9 +23,9 @@ public class LoadDatabase {
                                    CleanerScheduleRecordRepository cleanerScheduleRecordRepository) {
 
         /* HOTEL CLEANERS */
-        Cleaner cleaner1 = new Cleaner(1, "John", "", "Doe");
-        Cleaner cleaner2 = new Cleaner(2, "Petro", "Olehovich", "Petrov");
-        Cleaner cleaner3 = new Cleaner(3, "Karl", "", "Johnson");
+        Cleaner cleaner1 = new Cleaner(1L, "John", "", "Doe");
+        Cleaner cleaner2 = new Cleaner(2L, "Petro", "Olehovich", "Petrov");
+        Cleaner cleaner3 = new Cleaner(3L, "Karl", "", "Johnson");
 
         /* ROOMS ON THE FLOOR #1 */
         Room floor1_room1 = new Room(101, "155-44-33", RoomType.ONE_GUEST, true);
@@ -61,29 +61,29 @@ public class LoadDatabase {
         Room floor3_room9 = new Room(309, "375-88-99", RoomType.THREE_GUESTS, true);
 
         /* CLEANERS' SCHEDULE RECORDS */
-        CleanerScheduleRecord record1 = new CleanerScheduleRecord(1, DayOfWeek.SUNDAY, 1);
-        CleanerScheduleRecord record2 = new CleanerScheduleRecord(1, DayOfWeek.MONDAY, 2);
-        CleanerScheduleRecord record3 = new CleanerScheduleRecord(1, DayOfWeek.TUESDAY, 3);
-        CleanerScheduleRecord record4 = new CleanerScheduleRecord(1, DayOfWeek.WEDNESDAY, 1);
-        CleanerScheduleRecord record5 = new CleanerScheduleRecord(1, DayOfWeek.THURSDAY, 2);
-        CleanerScheduleRecord record6 = new CleanerScheduleRecord(1, DayOfWeek.FRIDAY, 3);
-        CleanerScheduleRecord record7 = new CleanerScheduleRecord(1, DayOfWeek.SATURDAY, 1);
+        CleanerScheduleRecord record1 = new CleanerScheduleRecord(cleaner1, DayOfWeek.SUNDAY, 1);
+        CleanerScheduleRecord record2 = new CleanerScheduleRecord(cleaner1, DayOfWeek.MONDAY, 2);
+        CleanerScheduleRecord record3 = new CleanerScheduleRecord(cleaner1, DayOfWeek.TUESDAY, 3);
+        CleanerScheduleRecord record4 = new CleanerScheduleRecord(cleaner1, DayOfWeek.WEDNESDAY, 1);
+        CleanerScheduleRecord record5 = new CleanerScheduleRecord(cleaner1, DayOfWeek.THURSDAY, 2);
+        CleanerScheduleRecord record6 = new CleanerScheduleRecord(cleaner1, DayOfWeek.FRIDAY, 3);
+        CleanerScheduleRecord record7 = new CleanerScheduleRecord(cleaner1, DayOfWeek.SATURDAY, 1);
 
-        CleanerScheduleRecord record8 = new CleanerScheduleRecord(2, DayOfWeek.SUNDAY, 3);
-        CleanerScheduleRecord record9 = new CleanerScheduleRecord(2, DayOfWeek.MONDAY, 1);
-        CleanerScheduleRecord record10 = new CleanerScheduleRecord(2, DayOfWeek.TUESDAY, 2);
-        CleanerScheduleRecord record11 = new CleanerScheduleRecord(2, DayOfWeek.WEDNESDAY, 3);
-        CleanerScheduleRecord record12 = new CleanerScheduleRecord(2, DayOfWeek.THURSDAY, 1);
-        CleanerScheduleRecord record13 = new CleanerScheduleRecord(2, DayOfWeek.FRIDAY, 2);
-        CleanerScheduleRecord record14 = new CleanerScheduleRecord(2, DayOfWeek.SATURDAY, 3);
+        CleanerScheduleRecord record8 = new CleanerScheduleRecord(cleaner2, DayOfWeek.SUNDAY, 3);
+        CleanerScheduleRecord record9 = new CleanerScheduleRecord(cleaner2, DayOfWeek.MONDAY, 1);
+        CleanerScheduleRecord record10 = new CleanerScheduleRecord(cleaner2, DayOfWeek.TUESDAY, 2);
+        CleanerScheduleRecord record11 = new CleanerScheduleRecord(cleaner2, DayOfWeek.WEDNESDAY, 3);
+        CleanerScheduleRecord record12 = new CleanerScheduleRecord(cleaner2, DayOfWeek.THURSDAY, 1);
+        CleanerScheduleRecord record13 = new CleanerScheduleRecord(cleaner2, DayOfWeek.FRIDAY, 2);
+        CleanerScheduleRecord record14 = new CleanerScheduleRecord(cleaner2, DayOfWeek.SATURDAY, 3);
 
-        CleanerScheduleRecord record15 = new CleanerScheduleRecord(3, DayOfWeek.SUNDAY, 2);
-        CleanerScheduleRecord record16 = new CleanerScheduleRecord(3, DayOfWeek.MONDAY, 3);
-        CleanerScheduleRecord record17 = new CleanerScheduleRecord(3, DayOfWeek.TUESDAY, 1);
-        CleanerScheduleRecord record18 = new CleanerScheduleRecord(3, DayOfWeek.WEDNESDAY, 2);
-        CleanerScheduleRecord record19 = new CleanerScheduleRecord(3, DayOfWeek.THURSDAY, 3);
-        CleanerScheduleRecord record20 = new CleanerScheduleRecord(3, DayOfWeek.FRIDAY, 1);
-        CleanerScheduleRecord record21 = new CleanerScheduleRecord(3, DayOfWeek.SATURDAY, 2);
+        CleanerScheduleRecord record15 = new CleanerScheduleRecord(cleaner3, DayOfWeek.SUNDAY, 2);
+        CleanerScheduleRecord record16 = new CleanerScheduleRecord(cleaner3, DayOfWeek.MONDAY, 3);
+        CleanerScheduleRecord record17 = new CleanerScheduleRecord(cleaner3, DayOfWeek.TUESDAY, 1);
+        CleanerScheduleRecord record18 = new CleanerScheduleRecord(cleaner3, DayOfWeek.WEDNESDAY, 2);
+        CleanerScheduleRecord record19 = new CleanerScheduleRecord(cleaner3, DayOfWeek.THURSDAY, 3);
+        CleanerScheduleRecord record20 = new CleanerScheduleRecord(cleaner3, DayOfWeek.FRIDAY, 1);
+        CleanerScheduleRecord record21 = new CleanerScheduleRecord(cleaner3, DayOfWeek.SATURDAY, 2);
 
         return args -> {
             cleanerRepository.saveAll(Arrays.asList(cleaner1, cleaner2, cleaner3));

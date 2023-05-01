@@ -17,7 +17,7 @@ public class RoomService {
     }
 
     public boolean areThereAvailableRooms() {
-        return roomRepository.areThereAvailableRooms();
+        return roomRepository.getNumberOfRoomsAvailable() > 0;
     }
 
     public Long getNumberOfAvailableRooms() {

@@ -23,7 +23,7 @@ public class CleanerService {
     }
 
     public Cleaner getCleanerByFloorAndDay(DayOfWeek dayOfWeek, Integer floorNumber) {
-        Optional<Cleaner> targetCleaner = cleanerRepository.findCleanerByFloorAndDay(floorNumber, dayOfWeek);
+        Optional<Cleaner> targetCleaner = cleanerRepository.findCleanerByFloorAndDay(dayOfWeek, floorNumber);
 
         if (targetCleaner.isEmpty()) {
             throw new CleanerNotFoundException(String.format("Cleaner that cleaned the floor %s on %s not found", floorNumber, dayOfWeek));

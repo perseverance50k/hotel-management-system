@@ -1,7 +1,6 @@
 package com.hotel.managementsystem.models.employees.cleaners;
 
-import jakarta.persistence.*;
-
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +10,7 @@ public class Cleaner {
     @Id
     @GeneratedValue
     @Column(name = "cleaner_id")
-    private Integer cleanerID;
+    private Long cleanerID;
 
     @Column(name = "first_name", nullable = false)
     private String firstName;
@@ -22,20 +21,20 @@ public class Cleaner {
     @Column(name = "last_name", nullable = false)
     private String lastName;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<CleanerScheduleRecord> scheduleRecords = new ArrayList<>();
+    @OneToMany(mappedBy = "cleaner", cascade = CascadeType.ALL, orphanRemoval = true)
+    private final List<CleanerScheduleRecord> scheduleRecords = new ArrayList<>();
 
     public Cleaner() {
     }
 
-    public Cleaner(Integer cleanerID, String firstName, String middleName, String lastName) {
+    public Cleaner(Long cleanerID, String firstName, String middleName, String lastName) {
         this.cleanerID = cleanerID;
         this.firstName = firstName;
         this.middleName = middleName;
         this.lastName = lastName;
     }
 
-    public Integer getCleanerID() {
+    public Long getCleanerID() {
         return cleanerID;
     }
 }

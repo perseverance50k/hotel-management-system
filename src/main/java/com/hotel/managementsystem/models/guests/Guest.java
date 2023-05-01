@@ -1,10 +1,9 @@
 package com.hotel.managementsystem.models.guests;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.time.LocalDate;
 
 @Entity(name = "guest")
@@ -13,7 +12,7 @@ public class Guest {
     @Id
     @GeneratedValue
     @Column(name = "guest_id")
-    private Integer guestID;
+    private Long guestID;
 
     @Column(name = "room_number", nullable = false)
     private Integer roomNumber;
