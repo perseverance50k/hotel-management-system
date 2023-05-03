@@ -1,9 +1,13 @@
 package com.hotel.managementsystem.models.guests;
 
 import jakarta.persistence.*;
+import lombok.Builder;
+import lombok.Getter;
 
 import java.time.LocalDate;
 
+@Getter
+@Builder
 @Entity(name = "guest")
 public class Guest {
 

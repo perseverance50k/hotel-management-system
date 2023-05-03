@@ -30,7 +30,7 @@ public class TestController {
         Guest guest1 = new Guest("Serhii", "Olexandrovich", "Chernikov", "FD-30124", "Chicago", LocalDate.now(), LocalDate.now().plusDays(7));
         Guest guest2 = new Guest("Some", "Awesome", "Person", "LD-43532", "Chicago", LocalDate.now(), LocalDate.now().plusDays(7));
 
-        administrationService.checkInGuests(List.of(guest1, guest2));
+//        administrationService.checkInGuests(List.of(guest1, guest2));
 
         System.out.println("NUMBER OF AVAILABLE ROOMS AFTER CHECK IN: " + administrationService.getNumberOfAvailableRooms());
         System.out.println("GUESTS FROM CHICAGO:\n" + administrationService.getGuestsInfoByCity("Chicago"));

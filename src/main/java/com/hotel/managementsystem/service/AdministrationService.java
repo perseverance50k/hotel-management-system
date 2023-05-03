@@ -1,5 +1,7 @@
 package com.hotel.managementsystem.service;
 
+import com.hotel.managementsystem.dto.CleanerDto;
+import com.hotel.managementsystem.dto.GuestDto;
 import com.hotel.managementsystem.exceptions.NoAvailableRoomTypeException;
 import com.hotel.managementsystem.models.employees.cleaners.Cleaner;
 import com.hotel.managementsystem.models.employees.cleaners.DayOfWeek;
@@ -9,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class AdministrationService {
@@ -24,16 +27,24 @@ public class AdministrationService {
         this.roomService = roomService;
     }
 
-    public List<Guest> getGuestsInfoByRoomNumber(Integer roomNumber) {
-        return guestService.getGuestsInfoByRoom(roomNumber);
+    public List<GuestDto> getGuestsInfoByRoomNumber(Integer roomNumber) {
+        List<GuestDto> guests = guestService.getGuestsInfoByRoom(roomNumber)
+                                            .stream()
+                                            .map(this::mapToGuestDto)
+                                            .collect(Collectors.toList());
+        return guests;
     }
 
-    public List<Guest> getGuestsInfoByCity(String city) {
-        return guestService.getGuestsByCity(city);
+    public List<GuestDto> getGuestsInfoByCity(String city) {
+        List<GuestDto> guests = guestService.getGuestsByCity(city)
+                                            .stream()
+                                            .map(this::mapToGuestDto)
+                                            .collect(Collectors.toList());
+        return guests;
     }
 
-    public Cleaner getCleanerInfoByDayAndFloor(String day, Integer floorNumber) {
-        return cleanerService.getCleanerByFloorAndDay(day, floorNumber);
+    public CleanerDto getCleanerInfoByDayAndFloor(String day, Integer floorNumber) {
+        return mapToCleanerDto(cleanerService.getCleanerByFloorAndDay(day, floorNumber));
     }
 
     public boolean areThereAvailableRooms() {
@@ -44,20 +55,20 @@ public class AdministrationService {
         return roomService.getNumberOfAvailableRooms();
     }
 
-    public void hireCleaner(Cleaner cleaner) {
-        cleanerService.hireNewCleaner(cleaner);
+    public void hireCleaner(CleanerDto cleanerDto) {
+        cleanerService.hireNewCleaner(mapToCleaner(cleanerDto));
     }
 
-    public void layOffCleaner(Cleaner cleaner) {
-        cleanerService.layOffCleaner(cleaner);
+    public void layOffCleaner(CleanerDto cleanerDto) {
+        cleanerService.layOffCleaner(mapToCleaner(cleanerDto));
     }
 
-    public void changeCleanerSchedule(Cleaner cleaner, String day, Integer floorNumber) {
-        cleanerService.changeCleanerSchedule(cleaner, DayOfWeek.valueOf(day), floorNumber);
+    public void changeCleanerSchedule(CleanerDto cleanerDto, String day, Integer floorNumber) {
+        cleanerService.changeCleanerSchedule(mapToCleaner(cleanerDto), DayOfWeek.valueOf(day), floorNumber);
     }
 
-    public void checkInGuests(List<Guest> guests) {
-        checkInGuestsAndReserveRoom(guests);
+    public void checkInGuests(List<GuestDto> guestDtos) {
+        checkInGuestsAndReserveRoom(mapToListOfGuests(guestDtos));
     }
 
     public void checkOutGuestsByRoomNumber(Integer roomNumber) {
@@ -91,5 +102,58 @@ public class AdministrationService {
     private void checkOutGuestsAndFreeUpRoom(Integer roomNumber) {
         guestService.checkOutGuestsFromRoom(roomNumber);
         roomService.setAvailableToTrue(roomNumber);
+    }
+
+    private GuestDto mapToGuestDto(Guest guest) {
+        GuestDto guestDto = GuestDto.builder()
+                .firstName(guest.getFirstName())
+                .middleName(guest.getMiddleName())
+                .lastName(guest.getLastName())
+                .passportNumber(guest.getPassportNumber())
+                .checkInDate(guest.getCheckInDate())
+                .checkOutDate(guest.getCheckOutDate())
+                .arrivedFromCity(guest.getArrivedFromCity())
+                .roomNumber(guest.getRoomNumber())
+                .build();
+
+        return guestDto;
+    }
+
+    private CleanerDto mapToCleanerDto(Cleaner cleaner) {
+        CleanerDto cleanerDto = CleanerDto.builder()
+                .firstName(cleaner.getFirstName())
+                .middleName(cleaner.getMiddleName())
+                .lastName(cleaner.getLastName())
+                .build();
+
+        return cleanerDto;
+    }
+
+    private Guest mapToGuest(GuestDto guestDto) {
+        Guest guest = Guest.builder()
+                .firstName(guestDto.getFirstName())
+                .middleName(guestDto.getMiddleName())
+                .lastName(guestDto.getLastName())
+                .passportNumber(guestDto.getPassportNumber())
+                .arrivedFromCity(guestDto.getArrivedFromCity())
+                .checkInDate(guestDto.getCheckInDate())
+                .checkOutDate(guestDto.getCheckOutDate())
+                .build();
+
+        return guest;
+    }
+
+    private List<Guest> mapToListOfGuests(List<GuestDto> guestDtos) {
+        return guestDtos.stream().map(this::mapToGuest).collect(Collectors.toList());
+    }
+
+    private Cleaner mapToCleaner(CleanerDto cleanerDto) {
+        Cleaner cleaner = Cleaner.builder()
+                .firstName(cleanerDto.getFirstName())
+                .middleName(cleanerDto.getMiddleName())
+                .lastName(cleanerDto.getLastName())
+                .build();
+
+        return cleaner;
     }
 }

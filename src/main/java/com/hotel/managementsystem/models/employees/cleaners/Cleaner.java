@@ -1,10 +1,14 @@
 package com.hotel.managementsystem.models.employees.cleaners;
 
 import jakarta.persistence.*;
+import lombok.Builder;
+import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
+@Builder
 @Entity(name = "cleaner")
 public class Cleaner {
 
