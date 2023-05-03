@@ -56,7 +56,7 @@ public class AdministrationService {
         cleanerService.changeCleanerSchedule(cleaner, DayOfWeek.valueOf(day), floorNumber);
     }
 
-    public void checkInGuests(Guest... guests) {
+    public void checkInGuests(List<Guest> guests) {
         checkInGuestsAndReserveRoom(guests);
     }
 
@@ -64,8 +64,8 @@ public class AdministrationService {
         checkOutGuestsAndFreeUpRoom(roomNumber);
     }
 
-    private void checkInGuestsAndReserveRoom(Guest... guests) {
-        String suitableRoomType = getSuitableRoomType(guests.length);
+    private void checkInGuestsAndReserveRoom(List<Guest> guests) {
+        String suitableRoomType = getSuitableRoomType(guests.size());
         Integer roomNumber = roomService.findFirstAvailableRoomNumberDependingOnType(String.valueOf(suitableRoomType));
 
         for (Guest guest : guests) {

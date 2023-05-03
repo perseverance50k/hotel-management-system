@@ -29,8 +29,8 @@ public class GuestService {
         return guestRepository.findGuestsByCity(city);
     }
 
-    public void checkInGuestsInRoom(Integer roomNumber, Guest... guests) {
-        guestRepository.saveAll(Arrays.asList(guests));
+    public void checkInGuestsInRoom(Integer roomNumber, List<Guest> guests) {
+        guestRepository.saveAll(guests);
         roomRepository.setIsAvailableFalse(roomNumber);
     }
 

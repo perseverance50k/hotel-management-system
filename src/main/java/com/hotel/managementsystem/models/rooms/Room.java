@@ -23,13 +23,17 @@ public class Room {
     @Column(name = "is_available", nullable = false)
     private Boolean isAvailable;
 
+    @Column(name = "price", nullable = false)
+    private Double price;
+
     public Room() {
     }
 
-    public Room(Integer roomNumber, String telephoneNumber, RoomType type, Boolean isAvailable) {
+    public Room(Integer roomNumber, String telephoneNumber, RoomType type, Boolean isAvailable, Double price) {
         this.roomNumber = roomNumber;
         this.telephoneNumber = telephoneNumber;
         this.type = type;
         this.isAvailable = isAvailable;
+        this.price = price;
     }
 }
