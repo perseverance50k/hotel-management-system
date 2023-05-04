@@ -9,8 +9,8 @@
     <form action="#" th:action="@{/admin/checkInProcessing}" th:object="${guestsForm}"
           method="post">
         <fieldset>
-            <input type="submit" id="submitButton" th:value="Save">
-            <input type="reset" id="resetButton" name="reset" th:value="Reset"/>
+            <input type="submit" id="submitButton" value="Заселити гостей">
+            <input type="reset" id="resetButton" name="reset" value="Скинути"/>
             <table>
                 <thead>
                 <tr>
@@ -30,8 +30,8 @@
                     <td><input type="text" th:field="*{guestDtoList[__${itemStat.index}__].middleName}" /></td>
                     <td><input type="text" th:field="*{guestDtoList[__${itemStat.index}__].passportNumber}" /></td>
                     <td><input type="text" th:field="*{guestDtoList[__${itemStat.index}__].arrivedFromCity}" /></td>
-<!--                    <td><input type="date" th:field="*{guestDtoList[__${itemStat.index}__].checkInDate}" /></td>-->
-<!--                    <td><input type="date" th:field="*{guestDtoList[__${itemStat.index}__].checkOutDate}" /></td>-->
+                    <td><input type="date" th:field="*{guestDtoList[__${itemStat.index}__].checkInDate}" /></td>
+                    <td><input type="date" th:field="*{guestDtoList[__${itemStat.index}__].checkOutDate}" /></td>
                 </tr>
                 </tbody>
             </table>
@@ -39,5 +39,11 @@
     </form>
 
     <h3>Виселити гостей</h3>
+    <form action="#" th:action="@{/admin/checkOutProcessing}" method="get">
+        <fieldset>
+            <p>№ кімнати<input type="number" name="room_number" min="101" max="399"></p>
+            <p><input type="submit" value="Виселети гостей з цього номеру"></p>
+        </fieldset>
+    </form>
 </body>
 </html>

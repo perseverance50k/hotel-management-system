@@ -9,6 +9,7 @@ import com.hotel.managementsystem.models.rooms.RoomType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -117,8 +118,8 @@ public class AdministrationService {
                 .middleName(guest.getMiddleName())
                 .lastName(guest.getLastName())
                 .passportNumber(guest.getPassportNumber())
-                .checkInDate(guest.getCheckInDate())
-                .checkOutDate(guest.getCheckOutDate())
+                .checkInDate(guest.getCheckInDate().toString())
+                .checkOutDate(guest.getCheckOutDate().toString())
                 .arrivedFromCity(guest.getArrivedFromCity())
                 .roomNumber(guest.getRoomNumber())
                 .build();
@@ -144,15 +145,15 @@ public class AdministrationService {
                 .lastName(guestDto.getLastName())
                 .passportNumber(guestDto.getPassportNumber())
                 .arrivedFromCity(guestDto.getArrivedFromCity())
-                .checkInDate(guestDto.getCheckInDate())
-                .checkOutDate(guestDto.getCheckOutDate())
+                .checkInDate(parseStringToLocalDate(guestDto.getCheckInDate()))
+                .checkOutDate(parseStringToLocalDate(guestDto.getCheckOutDate()))
                 .build();
 
         return guest;
     }
 
     private List<Guest> mapToListOfGuests(List<GuestDto> guestDtos) {
-        return guestDtos.stream().map(this::mapToGuest).collect(Collectors.toList());
+        return guestDtos.stream().filter(g -> g.getCheckInDate().length() > 0).map(this::mapToGuest).collect(Collectors.toList());
     }
 
     private Cleaner mapToCleaner(CleanerDto cleanerDto) {
@@ -168,4 +169,12 @@ public class AdministrationService {
     private List<CleanerDto> mapToListOfCleanerDtos(List<Cleaner> cleaners) {
         return cleaners.stream().map(this::mapToCleanerDto).collect(Collectors.toList());
     }
+
+    private LocalDate parseStringToLocalDate(String date) {
+        String[] yearMonthDay = date.split("-");
+        return LocalDate.of(Integer.parseInt(yearMonthDay[0]),
+                            Integer.parseInt(yearMonthDay[1]),
+                            Integer.parseInt(yearMonthDay[2]));
+    }
+
 }

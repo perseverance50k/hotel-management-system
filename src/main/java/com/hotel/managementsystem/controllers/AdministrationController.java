@@ -3,7 +3,6 @@ package com.hotel.managementsystem.controllers;
 import com.hotel.managementsystem.dto.CleanerDto;
 import com.hotel.managementsystem.dto.GuestDto;
 import com.hotel.managementsystem.dto.GuestsCheckInDto;
-import com.hotel.managementsystem.models.guests.Guest;
 import com.hotel.managementsystem.service.AdministrationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -98,10 +97,13 @@ public class AdministrationController {
 
     @PostMapping(path = "/checkInProcessing")
     public String processCheckIn(@ModelAttribute GuestsCheckInDto guestsCheckInDto) {
-        guestsCheckInDto.getGuestDtoList().stream().forEach(g -> {
-            System.out.println(g.getCheckInDate());
-        });
         administrationService.checkInGuests(guestsCheckInDto.getGuestDtoList());
+        return "redirect:/admin/checkInCheckOut";
+    }
+
+    @GetMapping(path = "checkOutProcessing")
+    public String processCheckOut(@RequestParam(name = "room_number") Integer roomNumber) {
+        administrationService.checkOutGuestsByRoomNumber(roomNumber);
         return "redirect:/admin/checkInCheckOut";
     }
 }

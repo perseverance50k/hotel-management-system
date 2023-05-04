@@ -18,6 +18,6 @@ public class GuestDto {
     private String middleName;
     private String lastName;
     private String arrivedFromCity;
-    private LocalDate checkInDate;
-    private LocalDate checkOutDate;
+    private String checkInDate;
+    private String checkOutDate;
 }
