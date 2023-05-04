@@ -2,14 +2,21 @@
 <html lang="ua" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Available rooms</title>
+    <title>Доступні номери</title>
+
+    <link rel="stylesheet" href="/css/myStyles.css">
 </head>
 <body>
-    <div>
-        Чи є в готелі вільні номери: <i th:text="${areThereAvailableRooms}"></i>
-    </div>
-    <div>
-        Кількість вільних номерів: <i th:text="${numberOfAvailableRooms}"></i>
-    </div>
+<div class="topnav">
+    <a class="active" href="#">Доступні кімнати</a>
+    <a href="/admin/main">Головна</a>
+</div>
+<div class="main-container">
+    <h3>Інформація про доступні номери в готелі</h3>
+
+    <p>Чи є в готелі вільні номери: <i th:text="${areThereAvailableRooms}"></i><p>
+
+    <p>Кількість вільних номерів: <i th:text="${numberOfAvailableRooms}"></i><p>
+</div>
 </body>
 </html>

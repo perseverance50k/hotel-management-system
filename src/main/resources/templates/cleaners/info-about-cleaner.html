@@ -2,12 +2,20 @@
 <html lang="ua" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Info about cleaner</title>
+    <title>Інформація про прибиральника</title>
+
+    <link rel="stylesheet" href="/css/myStyles.css">
 </head>
 <body>
-    <h2>Info about cleaner that worked on <span th:text="${day}"/> on <span th:text="${floorNumber}"/> floor</h2>
-    First name: <b th:text="${cleaner.getFirstName()}"/> <br>
-    Middle name: <b th:text="${cleaner.getMiddleName()}"/> <br>
-    Last name: <b th:text="${cleaner.getLastName()}"/>
+<div class="topnav">
+    <a class="active" href="#">Інформація про прибиральника</a>
+    <a href="/admin/main">Головна</a>
+</div>
+<div class="main-container">
+    <h3>Інформація про прибиральника який працював в (у) <span th:text="${day}"/> на <span th:text="${floorNumber}"/> поверсі</h3>
+    <p>Прізвище: <b th:text="${cleaner.getLastName()}"/></p>
+    <p>Ім'я: <b th:text="${cleaner.getFirstName()}"/></p>
+    <p>По батькові: <b th:text="${cleaner.getMiddleName()}"/></p>
+</div>
 </body>
 </html>

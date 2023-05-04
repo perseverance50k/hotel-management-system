@@ -2,15 +2,22 @@
 <html lang="ua" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Get info about cleaner</title>
+    <title>Пошук інформації про прибиральника</title>
+
+    <link rel="stylesheet" href="/css/myStyles.css">
 </head>
 <body>
-<form th:action="@{/admin/infoAboutCleanerByFloorAndDay}" method="get">
-  <label for="floor">Floor number</label>
-  <input type="number" name="floor" id="floor" min="1"> <br>
-  <label for="day">Day</label>
-  <input type="text" name="day" id="day">
-  <input type="submit" value="Show info">
-</form>
+<div class="topnav">
+    <a class="active" href="#">Пошук інормації про прибиральника</a>
+    <a href="/admin/main">Головна</a>
+</div>
+<div class="main-container">
+    <h3>Пошук інформації про прибиральника за днем за поверхом</h3>
+    <form th:action="@{/admin/infoAboutCleanerByFloorAndDay}" method="get">
+        <p> Поверх <input type="number" name="floor" id="floor" min="1"></p>
+        <p> День <input type="text" name="day" id="day"></p>
+        <button type="submit">Показати інформацію</button>
+    </form>
+</div>
 </body>
 </html>

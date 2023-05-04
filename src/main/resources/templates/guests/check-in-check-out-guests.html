@@ -2,15 +2,22 @@
 <html lang="ua" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Check In/Out Guests</title>
+    <title>Заселення/виселення гостей</title>
+
+    <link rel="stylesheet" href="/css/myStyles.css">
 </head>
 <body>
+<div class="topnav">
+    <a class="active" href="#">Заселення/виселення гостей</a>
+    <a href="/admin/main">Головна</a>
+</div>
+<div class="main-container">
     <h3>Заселити гостей</h3>
     <form action="#" th:action="@{/admin/checkInProcessing}" th:object="${guestsForm}"
           method="post">
         <fieldset>
-            <input type="submit" id="submitButton" value="Заселити гостей">
-            <input type="reset" id="resetButton" name="reset" value="Скинути"/>
+            <button type="submit">Заселити гостей</button>
+            <button type="reset">Скинути</button>
             <table>
                 <thead>
                 <tr>
@@ -42,8 +49,9 @@
     <form action="#" th:action="@{/admin/checkOutProcessing}" method="get">
         <fieldset>
             <p>№ кімнати<input type="number" name="room_number" min="101" max="399"></p>
-            <p><input type="submit" value="Виселети гостей з цього номеру"></p>
+            <p><button type="submit">Виселети гостей з цього номеру</button></p>
         </fieldset>
     </form>
+</div>
 </body>
 </html>

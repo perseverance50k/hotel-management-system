@@ -3,18 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>Інформація про гостей</title>
+
+    <link rel="stylesheet" href="/css/myStyles.css">
 </head>
 <body>
-    <h2>Display info about guests by city</h2>
+<div class="topnav">
+    <a class="active" href="#">Пошук інформації про гостей</a>
+    <a href="/admin/main">Головна</a>
+</div>
+<div class="main-container">
+    <h3>Пошук гостей за містом</h3>
     <form action="#"  th:action="@{/admin/guestsInfoByCity}" th:method="get">
-        <p>City: <input type="text" name="city"/></p>
-        <p><input type="submit" value="Search"/></p>
+        <p>Назва міста: <input type="text" name="city"/></p>
+        <p><button type="submit">Пошук</button></p>
     </form>
 
-    <h2>Display info about guests by room</h2>
+    <h3>Пошук гостей за номером кімнати</h3>
     <form action="#"  th:action="@{/admin/guestsInfoByRoom}" th:method="get">
-        <p>Room number: <input type="number" name="room_number" min="101" max="399"/></p>
-        <p><input type="submit" value="Search"/></p>
+        <p>Номер кімнати: <input type="number" name="room_number" min="101" max="399"/></p>
+        <p><button type="submit">Пошук</button></p>
     </form>
+</div>
 </body>
 </html>

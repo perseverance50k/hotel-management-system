@@ -2,9 +2,16 @@
 <html lang="ua" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Інфорація про гостей</title>
+
+    <link rel="stylesheet" href="/css/myStyles.css">
 </head>
 <body>
+<div class="topnav">
+    <a class="active" href="#">Інфорація про гостей</a>
+    <a href="/admin/main">Головна</a>
+</div>
+<div class="main-container">
     <h3 th:text="${message}"></h3>
     <table>
         <tr>
@@ -26,5 +33,6 @@
             <td th:text="${guest.checkOutDate}" />
         </tr>
     </table>
+</div>
 </body>
 </html>

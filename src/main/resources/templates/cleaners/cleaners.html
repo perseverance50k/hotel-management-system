@@ -2,33 +2,42 @@
 <html lang="ua" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Прибиральники</title>
+
+    <link rel="stylesheet" href="/css/myStyles.css">
 </head>
 <body>
-    <h3>Прибиральники, що працюють у готелі</h3>
-    <table>
-        <tr>
-            <th>Ім'я</th>
-            <th>По батькові</th>
-            <th>Прізвище</th>
-            <th></th>
-            <th></th>
-        </tr>
-        <tr th:each="cleaner: ${cleaners}">
-            <td th:text="${cleaner.getFirstName()}" />
-            <td th:text="${cleaner.getMiddleName()}" />
-            <td th:text="${cleaner.getLastName()}" />
-            <td><a href="#" th:href="@{/admin/layOffCleaner/{cleanerId}(cleanerId=${cleaner.cleanerID})}">Звільнити</a></td>
-            <td><a href="#" th:href="@{/admin/editSchedule/{cleanerId}(cleanerId=${cleaner.cleanerID})}">Редагувати розклад</a></td>
-        </tr>
-    </table>
+    <div class="topnav">
+        <a class="active" href="#">Прибиральники</a>
+        <a href="/admin/main">Головна</a>
+    </div>
+    <div class="main-container">
+        <h3>Прибиральники, що працюють у готелі</h3>
+        <table>
+            <tr>
+                <th>Ім'я</th>
+                <th>По батькові</th>
+                <th>Прізвище</th>
+                <th>Звільнити</th>
+                <th>Редагувати розклад</th>
+            </tr>
+            <tr th:each="cleaner: ${cleaners}">
+                <td th:text="${cleaner.getFirstName()}" />
+                <td th:text="${cleaner.getMiddleName()}" />
+                <td th:text="${cleaner.getLastName()}" />
+                <td><a href="#" th:href="@{/admin/layOffCleaner/{cleanerId}(cleanerId=${cleaner.cleanerID})}">Звільнити</a></td>
+                <td><a href="#" th:href="@{/admin/editSchedule/{cleanerId}(cleanerId=${cleaner.cleanerID})}">Редагувати розклад</a></td>
+            </tr>
+        </table>
 
-    <h3>Найняти нового прибиральника</h3>
-    <form th:action="@{/admin/hireCleaner}" th:object="${newCleanerDto}" method="post">
-        <p>Ім'я: <input type="text" th:field="*{firstName}" /></p>
-        <p>По батькові: <input type="text" th:field="*{middleName}" /></p>
-        <p>Прізвище: <input type="text" th:field="*{lastName}" /></p>
-        <p><input type="submit" value="Hire" /> <input type="reset" value="Reset" /></p>
-    </form>
+        <h3>Найняти нового прибиральника</h3>
+        <form th:action="@{/admin/hireCleaner}" th:object="${newCleanerDto}" method="post">
+            <p>Ім'я: <input type="text" th:field="*{firstName}" /></p>
+            <p>По батькові: <input type="text" th:field="*{middleName}" /></p>
+            <p>Прізвище: <input type="text" th:field="*{lastName}" /></p>
+            <p><button type="submit">Найняти</button>
+                <button type="reset">Скинути</button></p>
+        </form>
+    </div>
 </body>
 </html>
