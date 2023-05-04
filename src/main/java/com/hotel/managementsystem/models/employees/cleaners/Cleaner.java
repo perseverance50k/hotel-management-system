@@ -15,7 +15,7 @@ public class Cleaner {
     @Id
     @GeneratedValue
     @Column(name = "cleaner_id")
-    private Long cleanerID;
+    private Integer cleanerID;
 
     @Column(name = "first_name", nullable = false)
     private String firstName;
@@ -32,14 +32,14 @@ public class Cleaner {
     public Cleaner() {
     }
 
-    public Cleaner(Long cleanerID, String firstName, String middleName, String lastName) {
+    public Cleaner(Integer cleanerID, String firstName, String middleName, String lastName) {
         this.cleanerID = cleanerID;
         this.firstName = firstName;
         this.middleName = middleName;
         this.lastName = lastName;
     }
 
-    public Long getCleanerID() {
+    public Integer getCleanerID() {
         return cleanerID;
     }
 

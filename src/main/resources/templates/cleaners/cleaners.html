@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ua" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h3>Прибиральники, що працюють у готелі</h3>
+    <table>
+        <tr>
+            <th>Ім'я</th>
+            <th>По батькові</th>
+            <th>Прізвище</th>
+            <th></th>
+            <th></th>
+        </tr>
+        <tr th:each="cleaner: ${cleaners}">
+            <td th:text="${cleaner.getFirstName()}" />
+            <td th:text="${cleaner.getMiddleName()}" />
+            <td th:text="${cleaner.getLastName()}" />
+            <td><a href="#" th:href="@{/admin/layOffCleaner/{cleanerId}(cleanerId=${cleaner.cleanerID})}">Звільнити</a></td>
+            <td><a href="#" th:href="@{/admin/editSchedule/{cleanerId}(cleanerId=${cleaner.cleanerID})}">Редагувати розклад</a></td>
+        </tr>
+    </table>
+
+    <h3>Найняти нового прибиральника</h3>
+    <form th:action="@{/admin/hireCleaner}" th:object="${newCleanerDto}" method="post">
+        <p>Ім'я: <input type="text" th:field="*{firstName}" /></p>
+        <p>По батькові: <input type="text" th:field="*{middleName}" /></p>
+        <p>Прізвище: <input type="text" th:field="*{lastName}" /></p>
+        <p><input type="submit" value="Hire" /> <input type="reset" value="Reset" /></p>
+    </form>
+</body>
+</html>

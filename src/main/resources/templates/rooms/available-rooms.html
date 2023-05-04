@@ -1,10 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ua" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Available rooms</title>
 </head>
 <body>
-
+    <div>
+        Чи є в готелі вільні номери: <i th:text="${areThereAvailableRooms}"></i>
+    </div>
+    <div>
+        Кількість вільних номерів: <i th:text="${numberOfAvailableRooms}"></i>
+    </div>
 </body>
 </html>

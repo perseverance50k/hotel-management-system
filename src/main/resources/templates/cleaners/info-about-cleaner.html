@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ua" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Info about cleaner</title>
 </head>
 <body>
-
+    <h2>Info about cleaner that worked on <span th:text="${day}"/> on <span th:text="${floorNumber}"/> floor</h2>
+    First name: <b th:text="${cleaner.getFirstName()}"/> <br>
+    Middle name: <b th:text="${cleaner.getMiddleName()}"/> <br>
+    Last name: <b th:text="${cleaner.getLastName()}"/>
 </body>
 </html>

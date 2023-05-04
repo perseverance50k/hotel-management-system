@@ -30,4 +30,10 @@ public class CleanerScheduleRecord {
         this.floorNumber = floorNumber;
     }
 
+    @Override
+    public String toString() {
+        return "Record: " +
+                " dayOfWeek=" + dayOfWeek +
+                ", floorNumber=" + floorNumber;
+    }
 }

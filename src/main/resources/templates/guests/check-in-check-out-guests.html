@@ -2,9 +2,42 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Check In/Out Guests</title>
 </head>
 <body>
+    <h3>Заселити гостей</h3>
+    <form action="#" th:action="@{/admin/checkInProcessing}" th:object="${guestsForm}"
+          method="post">
+        <fieldset>
+            <input type="submit" id="submitButton" th:value="Save">
+            <input type="reset" id="resetButton" name="reset" th:value="Reset"/>
+            <table>
+                <thead>
+                <tr>
+                    <th>Прізвище</th>
+                    <th>Ім'я</th>
+                    <th>По батькові</th>
+                    <th>№ паспорту</th>
+                    <th>Прибув(ла) з міста</th>
+                    <th>Дата заселення</th>
+                    <th>Дата виселення</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="guest, itemStat : *{guestDtoList}">
+                    <td><input type="text" th:field="*{guestDtoList[__${itemStat.index}__].lastName}" /></td>
+                    <td><input type="text" th:field="*{guestDtoList[__${itemStat.index}__].firstName}" /></td>
+                    <td><input type="text" th:field="*{guestDtoList[__${itemStat.index}__].middleName}" /></td>
+                    <td><input type="text" th:field="*{guestDtoList[__${itemStat.index}__].passportNumber}" /></td>
+                    <td><input type="text" th:field="*{guestDtoList[__${itemStat.index}__].arrivedFromCity}" /></td>
+<!--                    <td><input type="date" th:field="*{guestDtoList[__${itemStat.index}__].checkInDate}" /></td>-->
+<!--                    <td><input type="date" th:field="*{guestDtoList[__${itemStat.index}__].checkOutDate}" /></td>-->
+                </tr>
+                </tbody>
+            </table>
+        </fieldset>
+    </form>
 
+    <h3>Виселити гостей</h3>
 </body>
 </html>

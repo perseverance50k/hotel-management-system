@@ -24,9 +24,9 @@ public class LoadDatabase {
                                    CleanerScheduleRecordRepository cleanerScheduleRecordRepository) {
 
         /* HOTEL CLEANERS */
-        Cleaner cleaner1 = new Cleaner(1L, "John", "", "Doe");
-        Cleaner cleaner2 = new Cleaner(2L, "Petro", "Olehovich", "Petrov");
-        Cleaner cleaner3 = new Cleaner(3L, "Karl", "", "Johnson");
+        Cleaner cleaner1 = new Cleaner(1, "John", "", "Doe");
+        Cleaner cleaner2 = new Cleaner(2, "Petro", "Olehovich", "Petrov");
+        Cleaner cleaner3 = new Cleaner(3, "Karl", "", "Johnson");
 
         /* ROOMS ON THE FLOOR #1 */
         Room floor1_room1 = new Room(101, "155-44-33", RoomType.ONE_GUEST, true, RoomPrices.ONE_GUEST_ROOM_PRICE);

@@ -34,10 +34,10 @@ public class Guest {
     @Column(name = "arrived_from_city")
     private String arrivedFromCity;
 
-    @Column(name = "check_in_date", nullable = false)
+    @Column(name = "check_in_date")
     private LocalDate checkInDate;
 
-    @Column(name = "check_out_date", nullable = false)
+    @Column(name = "check_out_date")
     private LocalDate checkOutDate;
 
     public Guest() {
@@ -46,6 +46,18 @@ public class Guest {
     public Guest(String firstName, String middleName, String lastName,
                  String passportNumber, String arrivedFromCity,
                  LocalDate checkInDate, LocalDate checkOutDate) {
+        this.passportNumber = passportNumber;
+        this.firstName = firstName;
+        this.middleName = middleName;
+        this.lastName = lastName;
+        this.arrivedFromCity = arrivedFromCity;
+        this.checkInDate = checkInDate;
+        this.checkOutDate = checkOutDate;
+    }
+
+    public Guest(Long guestID, Integer roomNumber, String passportNumber, String firstName, String middleName, String lastName, String arrivedFromCity, LocalDate checkInDate, LocalDate checkOutDate) {
+        this.guestID = guestID;
+        this.roomNumber = roomNumber;
         this.passportNumber = passportNumber;
         this.firstName = firstName;
         this.middleName = middleName;

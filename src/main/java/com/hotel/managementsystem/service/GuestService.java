@@ -38,4 +38,8 @@ public class GuestService {
         guestRepository.deleteGuestsByRoomNumber(roomNumber);
         roomRepository.setIsAvailableTrue(roomNumber);
     }
+
+//    public List<Guest> getAllGuests() {
+//        return guestRepository.findAll();
+//    }
 }

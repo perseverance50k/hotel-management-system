@@ -4,7 +4,6 @@ import com.hotel.managementsystem.dto.CleanerDto;
 import com.hotel.managementsystem.dto.GuestDto;
 import com.hotel.managementsystem.exceptions.NoAvailableRoomTypeException;
 import com.hotel.managementsystem.models.employees.cleaners.Cleaner;
-import com.hotel.managementsystem.models.employees.cleaners.DayOfWeek;
 import com.hotel.managementsystem.models.guests.Guest;
 import com.hotel.managementsystem.models.rooms.RoomType;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,16 +54,20 @@ public class AdministrationService {
         return roomService.getNumberOfAvailableRooms();
     }
 
+    public List<CleanerDto> getAllCleaners() {
+        return mapToListOfCleanerDtos(cleanerService.getAllCleaners());
+    }
+
     public void hireCleaner(CleanerDto cleanerDto) {
         cleanerService.hireNewCleaner(mapToCleaner(cleanerDto));
     }
 
-    public void layOffCleaner(CleanerDto cleanerDto) {
-        cleanerService.layOffCleaner(mapToCleaner(cleanerDto));
+    public void layOffCleanerById(Integer cleanerID) {
+        cleanerService.layOffCleanerById(cleanerID);
     }
 
-    public void changeCleanerSchedule(CleanerDto cleanerDto, String day, Integer floorNumber) {
-        cleanerService.changeCleanerSchedule(mapToCleaner(cleanerDto), DayOfWeek.valueOf(day), floorNumber);
+    public void changeCleanerSchedule(Integer cleanerID, String day, Integer floorNumber) {
+        cleanerService.changeCleanerSchedule(cleanerID, day, floorNumber);
     }
 
     public void checkInGuests(List<GuestDto> guestDtos) {
@@ -74,6 +77,10 @@ public class AdministrationService {
     public void checkOutGuestsByRoomNumber(Integer roomNumber) {
         checkOutGuestsAndFreeUpRoom(roomNumber);
     }
+
+//    public List<GuestDto> getAllGuests() {
+//        return guestService.getAllGuests().stream().map(this::mapToGuestDto).collect(Collectors.toList());
+//    }
 
     private void checkInGuestsAndReserveRoom(List<Guest> guests) {
         String suitableRoomType = getSuitableRoomType(guests.size());
@@ -121,6 +128,7 @@ public class AdministrationService {
 
     private CleanerDto mapToCleanerDto(Cleaner cleaner) {
         CleanerDto cleanerDto = CleanerDto.builder()
+                .cleanerID(cleaner.getCleanerID())
                 .firstName(cleaner.getFirstName())
                 .middleName(cleaner.getMiddleName())
                 .lastName(cleaner.getLastName())
@@ -155,5 +163,9 @@ public class AdministrationService {
                 .build();
 
         return cleaner;
+    }
+
+    private List<CleanerDto> mapToListOfCleanerDtos(List<Cleaner> cleaners) {
+        return cleaners.stream().map(this::mapToCleanerDto).collect(Collectors.toList());
     }
 }

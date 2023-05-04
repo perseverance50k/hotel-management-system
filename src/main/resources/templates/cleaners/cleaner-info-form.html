@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ua" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Get info about cleaner</title>
+</head>
+<body>
+<form th:action="@{/admin/infoAboutCleanerByFloorAndDay}" method="get">
+  <label for="floor">Floor number</label>
+  <input type="number" name="floor" id="floor" min="1"> <br>
+  <label for="day">Day</label>
+  <input type="text" name="day" id="day">
+  <input type="submit" value="Show info">
+</form>
+</body>
+</html>
