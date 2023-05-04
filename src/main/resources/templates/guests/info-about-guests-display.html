@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ua" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h3 th:text="${message}"></h3>
+    <table>
+        <tr>
+            <th>Прізвище</th>
+            <th>Ім'я</th>
+            <th>По батькові</th>
+            <th>№ паспорту</th>
+            <th>Місто</th>
+            <th>Дата заселення</th>
+            <th>Дата виселення</th>
+        </tr>
+        <tr th:each="guest : ${guests}">
+            <td th:text="${guest.lastName}" />
+            <td th:text="${guest.firstName}" />
+            <td th:text="${guest.middleName}" />
+            <td th:text="${guest.passportNumber}" />
+            <td th:text="${guest.arrivedFromCity}" />
+            <td th:text="${guest.getCheckInDate()}" />
+            <td th:text="${guest.checkOutDate}" />
+        </tr>
+    </table>
+</body>
+</html>

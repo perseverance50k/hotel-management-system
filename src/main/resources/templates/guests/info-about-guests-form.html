@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ua" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Інформація про гостей</title>
+</head>
+<body>
+    <h2>Display info about guests by city</h2>
+    <form action="#"  th:action="@{/admin/guestsInfoByCity}" th:method="get">
+        <p>City: <input type="text" name="city"/></p>
+        <p><input type="submit" value="Search"/></p>
+    </form>
+
+    <h2>Display info about guests by room</h2>
+    <form action="#"  th:action="@{/admin/guestsInfoByRoom}" th:method="get">
+        <p>Room number: <input type="number" name="room_number" min="101" max="399"/></p>
+        <p><input type="submit" value="Search"/></p>
+    </form>
+</body>
+</html>

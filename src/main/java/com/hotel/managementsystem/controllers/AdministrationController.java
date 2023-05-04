@@ -101,9 +101,28 @@ public class AdministrationController {
         return "redirect:/admin/checkInCheckOut";
     }
 
-    @GetMapping(path = "checkOutProcessing")
+    @GetMapping(path = "/checkOutProcessing")
     public String processCheckOut(@RequestParam(name = "room_number") Integer roomNumber) {
         administrationService.checkOutGuestsByRoomNumber(roomNumber);
         return "redirect:/admin/checkInCheckOut";
+    }
+
+    @GetMapping(path = "/guestsInfo")
+    public String getGuestsInfoPage() {
+        return "guests/info-about-guests-form";
+    }
+
+    @GetMapping(path = "/guestsInfoByCity")
+    public String processGuestsInfoByCity(@RequestParam(name = "city") String city, Model model) {
+        model.addAttribute("message", "Guests arrived from " + city);
+        model.addAttribute("guests", administrationService.getGuestsInfoByCity(city));
+        return "guests/info-about-guests-display";
+    }
+
+    @GetMapping(path = "/guestsInfoByRoom")
+    public String processGuestsInfoByRoom(@RequestParam(name = "room_number") Integer roomNumber, Model model) {
+        model.addAttribute("message", "Guests that live in room #" + roomNumber);
+        model.addAttribute("guests", administrationService.getGuestsInfoByRoomNumber(roomNumber));
+        return "guests/info-about-guests-display";
     }
 }
